@@ -55,6 +55,13 @@ class Deck {
     }
 }
 
+class Card {
+    constructor() {
+        this.name = null;
+        this.value = null;
+    }
+}
+
 class Main {
     constructor() {
         this.deck = new Deck();
@@ -62,14 +69,54 @@ class Main {
         this.player2 = new Player();
     }
 
+    // starts game
     start() {
+        alert('Click OK to start the game');
         // console.log(this.player1.score, this.player1.currentCard);
         // console.log(this.player2.score, this.player2.currentCard);
-        // console.log(Math.floor(Math.random() * 52 + 1))
+        // console.log(Math.floor(Math.random() * 52))
 
         this.deal();
+
+        alert('The cards have been dealt. Click OK to continue.')
+
+        while (this.player1.deck.length > 0 && this.player2.deck.length > 0) {
+            this.pickCard(this.player1);
+            this.pickCard(this.player2);
+
+            alert(`Player 1 has ${this.player1.currentCard.name}\nPlayer 2 has ${this.player2.currentCard.name}`);
+
+            // console.log(this.player1.currentCard);
+            // console.log(this.player2.currentCard);
+
+            if (this.player1.currentCard.value > this.player2.currentCard.value) {
+                this.player1.score += 1;
+
+                alert(`Player 1, you win this round! You now have ${this.player1.score} points.\nPlayer 2 has ${this.player2.score} points.`)
+            }
+            else if (this.player2.currentCard.value > this.player1.currentCard.value) {
+                this.player2.score += 1;
+
+                alert(`Player 2, you win this round! You now have ${this.player2.score} points.\nPlayer 1 has ${this.player1.score} points.`)
+            } else {
+                alert('It\'s a tie! No points awarded.')
+            }
+
+            // console.log(this.player1.score, this.player2.score);
+        }
+
+        alert(`The game is over. Let\'s compare scores...\n\nPlayer 1: ${this.player1.score} points.\nPlayer 2: ${this.player2.score} points.`)
+
+        let winner = this.compareScores(this.player1, this.player2);
+        
+        if (winner) {
+            alert(`Player ${winner} wins!`);
+        } else {
+            alert('It\'s a tie!');
+        }
     }
 
+    // deals cards to both players
     deal() {
         let dealtCards = []
 
@@ -82,7 +129,7 @@ class Main {
             }
         }
 
-        console.log(this.player1.deck);
+        // console.log(this.player1.deck);
 
         while (this.player2.deck.length < 6) {
             let chosenCard = Math.floor(Math.random() * 12)
@@ -93,7 +140,30 @@ class Main {
             }
         }
 
-        console.log(this.player2.deck);
+        // console.log(this.player2.deck);
+    }
+
+    // picks cards from the deck
+    pickCard(player) {
+        let playerCard = new Card();
+        playerCard.name = player.deck[0].cardName;
+        playerCard.value = player.deck[0].value;
+
+        player.currentCard = playerCard;
+
+        player.deck.splice(0,1);
+    }
+
+    // compares scores at end of game and returns winning player number
+    compareScores(player1, player2) {
+        if (player1.score > player2.score) {
+            return '1';
+        }
+        else if (player2.score > player1.score) {
+            return '2';
+        } else {
+            return false;
+        }
     }
 }
 
