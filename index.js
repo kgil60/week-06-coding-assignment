@@ -108,7 +108,7 @@ class Main {
         this.player2 = new Player();
     }
 
-    // starts game
+    // STARTS GAME
     start() {
         alert('Click OK to start the game');
         // console.log(this.player1.score, this.player1.currentCard);
@@ -158,7 +158,7 @@ class Main {
         }
     }
 
-    // deals cards to both players
+    // DEALS CARDS TO BOTH PLAYERS
     deal() {
         let dealtCards = []
 
@@ -185,7 +185,7 @@ class Main {
         // console.log(this.player2.deck);
     }
 
-    // picks cards from the deck
+    // PICKS A CARD FROM THE DECK
     pickCard(player) {
         let playerCard = new Card();
         playerCard.name = player.deck[0].cardName;
@@ -196,7 +196,7 @@ class Main {
         player.deck.splice(0,1);
     }
 
-    // compares scores at end of game and returns winning player number
+    // COMPARES SCORES AT END OF GAME AND RETURNS WINNING PLAYER NUMBER
     compareScores(player1, player2) {
         if (player1.score > player2.score) {
             return '1';
