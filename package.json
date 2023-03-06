@@ -1,0 +1,24 @@
+{
+  "name": "week-06-devtools_debugging_and_unit_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgil60/week-06-coding-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kgil60/week-06-coding-assignment/issues"
+  },
+  "homepage": "https://github.com/kgil60/week-06-coding-assignment#readme",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}

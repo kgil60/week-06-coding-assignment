@@ -1,32 +1,3 @@
-//  card deck is array of objects {cardName: "Ace of Hearts", value: 1}
-
-// function to deal to 2 players
-    // dealt cards array with cards dealt to first player (player1Deck)
-        // pick random number 1 - 52, if not in dealtCards push to player1Deck, push number to dealtCards, until 26 cards dealt
-        // do same for player2
-
-// player1Score, player2Score variables
-    
-// function to check scores
-    // player1Card, player2Card perameters
-    // return whos card was higher, false if tie
-
-// CLASSES:
-    // Player
-        // currentCard = new Card() - picks from top of deck
-    
-    // Deck
-        
-    
-    // Card
-        // pickCard()
-
-    // Main
-        // start() - starts game
-        // deck = new Deck()
-        // compareScores() - compares scores
-        // deal() - deals cards
-
 class Player {
     constructor() {
         this.score = 0;
@@ -111,13 +82,10 @@ class Main {
     // STARTS GAME
     start() {
         alert('Click OK to start the game');
-        // console.log(this.player1.score, this.player1.currentCard);
-        // console.log(this.player2.score, this.player2.currentCard);
-        // console.log(Math.floor(Math.random() * 52))
 
         this.deal();
 
-        alert('The cards have been dealt. Click OK to continue.')
+        alert('The cards have been dealt. Click OK to continue.');
 
         while (this.player1.deck.length > 0 && this.player2.deck.length > 0) {
             this.pickCard(this.player1);
@@ -125,27 +93,19 @@ class Main {
 
             alert(`Player 1 has ${this.player1.currentCard.name}\nPlayer 2 has ${this.player2.currentCard.name}`);
 
-            // console.log(this.player1.currentCard);
-            // console.log(this.player2.currentCard);
-
             if (this.player1.currentCard.value > this.player2.currentCard.value) {
                 this.player1.score += 1;
 
-                alert(`Player 1, you win this round! You now have ${this.player1.score} points.\nPlayer 2 has ${this.player2.score} points.`)
+                alert(`Player 1, you win this round! You now have ${this.player1.score} points.\nPlayer 2 has ${this.player2.score} points.`);
             }
             else if (this.player2.currentCard.value > this.player1.currentCard.value) {
                 this.player2.score += 1;
 
-                alert(`Player 2, you win this round! You now have ${this.player2.score} points.\nPlayer 1 has ${this.player1.score} points.`)
+                alert(`Player 2, you win this round! You now have ${this.player2.score} points.\nPlayer 1 has ${this.player1.score} points.`);
             } else {
-                alert('It\'s a tie! No points awarded.')
+                alert('It\'s a tie! No points awarded.');
             }
-
-            // console.log(this.player1.score, this.player2.score);
         }
-
-        // console.log(this.player1.deck);
-        // console.log(this.player2.deck);
 
         alert(`The game is over. Let\'s compare scores...\n\nPlayer 1: ${this.player1.score} points.\nPlayer 2: ${this.player2.score} points.`)
 
@@ -171,8 +131,6 @@ class Main {
             }
         }
 
-        // console.log(this.player1.deck);
-
         while (this.player2.deck.length < 26) {
             let chosenCard = Math.floor(Math.random() * 52)
 
@@ -181,8 +139,6 @@ class Main {
                 dealtCards.push(this.deck.cards[chosenCard]);
             }
         }
-
-        // console.log(this.player2.deck);
     }
 
     // PICKS A CARD FROM THE DECK
